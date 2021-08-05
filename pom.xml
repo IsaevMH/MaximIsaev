@@ -17,6 +17,9 @@
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
         <testng.configs.path>${project.build.testOutputDirectory}/testng</testng.configs.path>
         <testng.suite.file>${testng.configs.path}/calc.empty.xml</testng.suite.file>
+        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
+        <maven-compiler-plugin.source>11</maven-compiler-plugin.source>
+        <maven-compiler-plugin.target>11</maven-compiler-plugin.target>
     </properties>
 
     <dependencies>
@@ -48,10 +51,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>${maven-compiler-plugin.source}</source>
+                    <target>${maven-compiler-plugin.target}</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -68,19 +71,19 @@
     </build>
     <profiles>
         <profile>
-            <id>hw1-first-profile</id>
+            <id>hw1-allMathematicalOperationsTest-profile</id>
             <properties>
                 <testng.suite.file>${testng.configs.path}/calc.allTest.xml</testng.suite.file>
             </properties>
         </profile>
         <profile>
-            <id>hw1-second-profile</id>
+            <id>hw1-multAndDivOperationsTest-profile</id>
             <properties>
                 <testng.suite.file>${testng.configs.path}/calc.MultAndDivTestGroup.xml</testng.suite.file>
             </properties>
         </profile>
         <profile>
-            <id>hw1-third-profile</id>
+            <id>hw1-sumAndSubOperationsTest-profile</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
