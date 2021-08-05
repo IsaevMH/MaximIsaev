@@ -7,12 +7,12 @@ import org.testng.annotations.BeforeMethod;
 public class BaseTest {
     protected Calculator calculator;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void setUp() {
         calculator = new Calculator();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void tearDown() {
         calculator = null;
     }
