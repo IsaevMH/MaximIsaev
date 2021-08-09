@@ -1,21 +1,17 @@
-package com.epam.tc.hw2;
+package com.epam.tc.hw2.ex1;
 
+import com.epam.tc.hw2.BaseTest;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import java.util.List;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.*;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 
-public class IndexPageTest {
-    private static final String BASE_URL = "https://jdi-testing.github.io/jdi-light/index.html";
-    private static final String login = "Roman";
-    private static final String password = "Jdi1234";
-    private WebDriver driver;
-    SoftAssert softAssert;
+public class IndexPageTest extends BaseTest {
 
     @BeforeTest
     public void setUp() {
@@ -156,10 +152,5 @@ public class IndexPageTest {
         softAssert.assertEquals(menuOptions.get(4).getText(), "Elements packs");
 
         softAssert.assertAll();
-    }
-
-    @AfterTest
-    public void tearDown() {
-        driver.close();
     }
 }
