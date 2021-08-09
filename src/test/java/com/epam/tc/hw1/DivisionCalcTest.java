@@ -11,7 +11,7 @@ public class DivisionCalcTest extends BaseTest {
             dataProvider = "division")
     public void divisionTest(long firstDigit, long secondDigit, long expectedResult) {
         long resultOfDivision = calculator.div(firstDigit, secondDigit);
-        assertThat(resultOfDivision)
+        assertThat(resultOfDivision).as("Division was wrong")
                 .isEqualTo(expectedResult);
     }
 
