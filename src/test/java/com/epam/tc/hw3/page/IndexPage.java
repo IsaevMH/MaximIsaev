@@ -34,6 +34,10 @@ public class IndexPage extends AbstractPage {
     private WebElement frameButton;
     @FindBy(xpath = "//ul[@class='sidebar-menu left']/li")
     private List<WebElement> leftMenuOptions;
+    @FindBy(xpath = "//div//ul/li[@class='dropdown']")
+    private WebElement serviceButton;
+    @FindBy(xpath = "//ul/li/a[text() ='Different elements']")
+    private WebElement differentElementsOption;
 
     public IndexPage(WebDriver driver) {
         super(driver);
@@ -83,5 +87,11 @@ public class IndexPage extends AbstractPage {
 
     public List<WebElement> getLeftMenuOptions() {
         return leftMenuOptions;
+    }
+
+    public DifferentElementsPage gotToDifferentElementsPage() {
+        serviceButton.click();
+        differentElementsOption.click();
+        return new DifferentElementsPage(driver);
     }
 }
