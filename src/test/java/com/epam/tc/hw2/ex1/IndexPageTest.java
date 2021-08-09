@@ -13,15 +13,6 @@ import org.testng.asserts.SoftAssert;
 
 public class IndexPageTest extends BaseTest {
 
-    @BeforeTest
-    public void setUp() {
-        softAssert = new SoftAssert();
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.navigate().to(BASE_URL);
-    }
-
     @Test
     public void isTheTitleOfPageReceived() {
         String expectedResult = "Home Page";
