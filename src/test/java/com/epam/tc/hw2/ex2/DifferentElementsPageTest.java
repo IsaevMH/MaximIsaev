@@ -2,27 +2,18 @@ package com.epam.tc.hw2.ex2;
 
 import com.epam.tc.hw2.BaseTest;
 import com.epam.tc.hw2.TextSpliterator;
+import java.util.Arrays;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 public class DifferentElementsPageTest extends BaseTest {
-
     @Test
-    public void isTheTitleOfPageReceived() {
-        String expectedResult = "Home Page";
+    public void isAllTestsSuccessfulyCompleted() {
+        softAssert.assertEquals(driver.getTitle(), "Home Page");
 
-        driver.navigate().to(BASE_URL);
-        String pageTitle = driver.getTitle();
-
-        softAssert.assertEquals(pageTitle, expectedResult);
-
-        softAssert.assertAll();
-    }
-
-    @Test(dependsOnMethods = "isTheTitleOfPageReceived")
-    public void isUserLogIn() {
+        //isUserLogIn
         List<WebElement> dropDownMenuButton = driver.findElements(By.className("dropdown-toggle"));
         dropDownMenuButton.get(1).click();
 
@@ -35,16 +26,9 @@ public class DifferentElementsPageTest extends BaseTest {
         WebElement enterButton = driver.findElement(By.id("login-button"));
         enterButton.click();
 
-        WebElement actualName = driver.findElement(By.id("user-name"));
-        String expectedName = "ROMAN IOVLEV";
+        softAssert.assertEquals(driver.findElement(By.id("user-name")).getText(), "ROMAN IOVLEV");
 
-        softAssert.assertEquals(actualName.getText(), expectedName);
-
-        softAssert.assertAll();
-    }
-
-    @Test(dependsOnMethods = "isUserLogIn")
-    public void isOptionsChecked() {
+        //isOptionsChecked
         WebElement serviceButton = driver.findElement(By.xpath("//div//ul/li[@class='dropdown']"));
         serviceButton.click();
 
@@ -61,23 +45,17 @@ public class DifferentElementsPageTest extends BaseTest {
 
         WebElement dropDownList = driver.findElement(By.xpath("//div/select[@class='uui-form-element']"));
         dropDownList.click();
+
         List<WebElement> options = driver.findElements(By.xpath("//div/select[@class='uui-form-element']/option"));
         options.get(3).click();
         dropDownList.click();
 
         List<WebElement> logs = driver.findElements(By.xpath("//div[@class='info-panel-section']/ul/li"));
+        List<String> expectedResultList = Arrays.asList("Colors:Yellow", "metal:Selen", "Wind:true", "Water:true");
 
-        String result = TextSpliterator.split(logs.get(2).getText());
-        softAssert.assertEquals(result, "Wind:true");
-
-        result = TextSpliterator.split(logs.get(3).getText());
-        softAssert.assertEquals(result, "Water:true");
-
-        result = TextSpliterator.split(logs.get(1).getText());
-        softAssert.assertEquals(result, "metal:Selen");
-
-        result = TextSpliterator.split(logs.get(0).getText());
-        softAssert.assertEquals(result, "Colors:Yellow");
+        for (int i = 0; i < logs.size(); i++) {
+            softAssert.assertEquals(TextSpliterator.split(logs.get(i).getText()), expectedResultList.get(i));
+        }
 
         softAssert.assertAll();
     }
