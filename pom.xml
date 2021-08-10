@@ -15,11 +15,12 @@
         <testng.version>7.4.0</testng.version>
         <assertj-core.version>3.20.2</assertj-core.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-        <testng.configs.path>${project.build.testOutputDirectory}/testng/hw1</testng.configs.path>
-        <testng.suite.file>${testng.configs.path}/calc.empty.xml</testng.suite.file>
+        <testng.configs.path>${project.build.testOutputDirectory}/testng</testng.configs.path>
+        <testng.suite.file>${testng.configs.path}/hw1/calc.empty.xml</testng.suite.file>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-compiler-plugin.source>11</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>11</maven-compiler-plugin.target>
+        <testng.selenium1Suite.file>${testng.configs.path}/hw2/selenium.emptyTest.xml</testng.selenium1Suite.file>
     </properties>
 
     <dependencies>
@@ -76,6 +77,7 @@
                 <configuration>
                     <suiteXmlFiles>
                         <suiteXmlFile>${testng.suite.file}</suiteXmlFile>
+                        <suiteXmlFile>${testng.selenium1Suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
@@ -85,13 +87,13 @@
         <profile>
             <id>hw1-allMathematicalOperationsTest-profile</id>
             <properties>
-                <testng.suite.file>${testng.configs.path}/calc.allTest.xml</testng.suite.file>
+                <testng.suite.file>${testng.configs.path}/hw1/calc.allTest.xml</testng.suite.file>
             </properties>
         </profile>
         <profile>
             <id>hw1-multAndDivOperationsTest-profile</id>
             <properties>
-                <testng.suite.file>${testng.configs.path}/calc.MultAndDivTestGroup.xml</testng.suite.file>
+                <testng.suite.file>${testng.configs.path}/hw1/calc.MultAndDivTestGroup.xml</testng.suite.file>
             </properties>
         </profile>
         <profile>
@@ -100,7 +102,25 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <testng.suite.file>${testng.configs.path}/calc.SumAndSubTestGroup.xml</testng.suite.file>
+                <testng.suite.file>${testng.configs.path}/hw1/calc.SumAndSubTestGroup.xml</testng.suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw2-allSeleniumTests-profile</id>
+            <properties>
+                <testng.selenium1Suite.file>${testng.configs.path}/hw2/selenium.allTest.xml</testng.selenium1Suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw2-IndexPageTest-profile</id>
+            <properties>
+                <testng.selenium1Suite.file>${testng.configs.path}/hw2/selenium.ex1Test.xml</testng.selenium1Suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw2-DifferentElementsPageTest-profile</id>
+            <properties>
+                <testng.selenium1Suite.file>${testng.configs.path}/hw2/selenium.ex2Test.xml</testng.selenium1Suite.file>
             </properties>
         </profile>
     </profiles>
