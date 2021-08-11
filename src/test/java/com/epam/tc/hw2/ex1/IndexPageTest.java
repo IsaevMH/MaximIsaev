@@ -9,6 +9,9 @@ import org.testng.annotations.Test;
 
 
 public class IndexPageTest extends BaseTest {
+
+
+
     @Test
     public void isAllTestsSuccessfulyCompleted() {
         //isTheTitleOfPageReceived

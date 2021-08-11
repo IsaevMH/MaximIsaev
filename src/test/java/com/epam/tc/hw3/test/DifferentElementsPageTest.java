@@ -21,14 +21,13 @@ public class DifferentElementsPageTest extends BaseTest {
 
     @Test(dependsOnMethods = "isUserLogin")
     public void areWaterAndWindCheckboxesSelected() {
-        List<String> expectedResult = Arrays.asList(new String[] {"Wind:true", "Water:true"});
+        List<String> expectedResult = Arrays.asList("Wind:true", "Water:true");
 
         List<String> checkedWindAndWaterCheckBoxesResult = new IndexPage(driver)
                 .openPage()
                 .gotToDifferentElementsPage()
                 .selectWaterAndWindCheckBoxes()
                 .getAllSelectedElements();
-
         softAssert.assertEquals(checkedWindAndWaterCheckBoxesResult, expectedResult);
         softAssert.assertAll();
     }
@@ -40,7 +39,6 @@ public class DifferentElementsPageTest extends BaseTest {
                 .selectSelenMetalRadio()
                 .getAllSelectedElements()
                 .get(0);
-
         softAssert.assertEquals(metalActualResult, expectedResult);
         softAssert.assertAll();
     }
@@ -52,7 +50,6 @@ public class DifferentElementsPageTest extends BaseTest {
                 .selectYellowColor()
                 .getAllSelectedElements()
                 .get(0);
-
         softAssert.assertEquals(colorActualResult, expectedResult);
         softAssert.assertAll();
     }

@@ -2,24 +2,23 @@ package com.epam.tc.hw3.test;
 
 import com.epam.tc.hw3.driver.DriverSingleton;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 public class BaseTest {
-
-    protected static WebDriver driver;
+    protected static final String BASE_URL = "https://jdi-testing.github.io/jdi-light/index.html";
+    protected WebDriver driver;
     protected SoftAssert softAssert;
 
-    @BeforeTest
+    @BeforeClass
     public void setUp() {
         driver = DriverSingleton.getDriver();
         softAssert = new SoftAssert();
+        driver.navigate().to(BASE_URL);
     }
 
-    @AfterTest
+    @AfterClass
     public void stopBrowser() {
-        driver.quit();
         driver = null;
     }
 }

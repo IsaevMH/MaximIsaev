@@ -21,6 +21,7 @@
         <maven-compiler-plugin.source>11</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>11</maven-compiler-plugin.target>
         <testng.selenium1Suite.file>${testng.configs.path}/hw2/selenium.emptyTest.xml</testng.selenium1Suite.file>
+        <testng.selenium2Suite.file>${testng.configs.path}/hw3/selenium2.emptyTest.xml</testng.selenium2Suite.file>
     </properties>
 
     <dependencies>
@@ -78,6 +79,7 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${testng.suite.file}</suiteXmlFile>
                         <suiteXmlFile>${testng.selenium1Suite.file}</suiteXmlFile>
+                        <suiteXmlFile>${testng.selenium2Suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>
@@ -121,6 +123,24 @@
             <id>hw2-DifferentElementsPageTest-profile</id>
             <properties>
                 <testng.selenium1Suite.file>${testng.configs.path}/hw2/selenium.ex2Test.xml</testng.selenium1Suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw3-IndexPageTest-profile</id>
+            <properties>
+                <testng.selenium2Suite.file>${testng.configs.path}/hw3/selenium2.ex1Test.xml</testng.selenium2Suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw3-DifferentElementsPageTest-profile</id>
+            <properties>
+                <testng.selenium2Suite.file>${testng.configs.path}/hw3/selenium2.ex2Test.xml</testng.selenium2Suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw3-allPagesTests-profile</id>
+            <properties>
+                <testng.selenium2Suite.file>${testng.configs.path}/hw3/selenium2.allTest.xml</testng.selenium2Suite.file>
             </properties>
         </profile>
     </profiles>

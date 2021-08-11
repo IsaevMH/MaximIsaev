@@ -20,6 +20,8 @@ public class IndexPage extends AbstractPage {
     private WebElement passwordField;
     @FindBy(id = "login-button")
     private WebElement enterButton;
+    @FindBy(xpath = "//div[@class = 'logout']/button/span")
+    private WebElement logoutButton;
     @FindBy(xpath = "//div/div[@class='benefit']/div")
     List<WebElement> listOfPicture;
     @FindBy(xpath = "//div/span[@class='benefit-txt']")
@@ -55,6 +57,12 @@ public class IndexPage extends AbstractPage {
         loginField.sendKeys(DataReader.getProperty("login"));
         passwordField.sendKeys(DataReader.getProperty("passwd"));
         enterButton.click();
+        return this;
+    }
+
+    public IndexPage logout() {
+        dropDownList.get(1).click();
+        logoutButton.click();
         return this;
     }
 
