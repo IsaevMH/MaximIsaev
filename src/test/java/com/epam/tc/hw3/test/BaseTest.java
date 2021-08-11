@@ -1,6 +1,7 @@
 package com.epam.tc.hw3.test;
 
-import com.epam.tc.hw3.driver.DriverSingleton;
+import com.epam.tc.hw3.driver.Driver;
+import com.epam.tc.hw3.service.DataReader;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
@@ -12,13 +13,13 @@ public class BaseTest {
 
     @BeforeClass
     public void setUp() {
-        driver = DriverSingleton.getDriver();
+        driver = new Driver().getDriver();
         softAssert = new SoftAssert();
         driver.navigate().to(BASE_URL);
     }
 
     @AfterClass
     public void stopBrowser() {
-        driver = null;
+        driver.quit();
     }
 }
