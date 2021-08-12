@@ -11,7 +11,7 @@ public class MultiplicationCalcTest extends BaseTest {
             dataProvider = "multiplication")
     public void multiplicationTest(long firstDigit, long secondDigit, long expectedResult) {
         long resultOfMultiplication = calculator.mult(firstDigit, secondDigit);
-        assertThat(resultOfMultiplication)
+        assertThat(resultOfMultiplication).as("Multiplication was wrong")
                 .isEqualTo(expectedResult);
     }
 }

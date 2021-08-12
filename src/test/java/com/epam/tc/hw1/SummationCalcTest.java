@@ -11,7 +11,7 @@ public class SummationCalcTest extends BaseTest {
         dataProvider = "summation")
     public void summationTest(long firstDigit, long secondDigit, long expectedResult) {
         long resultOfSumming = calculator.sum(firstDigit, secondDigit);
-        assertThat(resultOfSumming)
+        assertThat(resultOfSumming).as("Summation was wrong")
                 .isEqualTo(expectedResult);
     }
 }

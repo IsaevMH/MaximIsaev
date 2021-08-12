@@ -11,7 +11,7 @@ public class SubtractionCalcTest extends BaseTest {
             dataProvider = "subtraction")
     public void subtractionTest(long firstDigit, long secondDigit, long expectedResult) {
         long resultOfSubtraction = calculator.sub(firstDigit, secondDigit);
-        assertThat(resultOfSubtraction)
+        assertThat(resultOfSubtraction).as("Subtraction was worng")
                 .isEqualTo(expectedResult);
     }
 }
