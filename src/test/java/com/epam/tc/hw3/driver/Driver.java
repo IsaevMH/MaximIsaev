@@ -19,6 +19,7 @@ public class Driver {
             case firefox:
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
+                break;
         }
         driver.manage().window().maximize();
         return driver;
