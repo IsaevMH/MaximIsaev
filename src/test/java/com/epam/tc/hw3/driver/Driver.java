@@ -10,16 +10,19 @@ public class Driver {
     private WebDriver driver;
 
     public WebDriver getDriver() {
-        switch (DataReader.getProperty("browser")) {
-            case "chrome":
+        switch (Browser.valueOf(DataReader.getProperty("browser"))) {
+            case chrome:
                 WebDriverManager.chromedriver().setup();
                 driver = new ChromeDriver();
                 break;
-            case "firefox":
+            case firefox:
                 WebDriverManager.firefoxdriver().setup();
                 driver = new FirefoxDriver();
         }
         driver.manage().window().maximize();
         return driver;
     }
+}
+enum Browser {
+    chrome, firefox
 }
