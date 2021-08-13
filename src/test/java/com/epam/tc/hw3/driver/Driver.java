@@ -1,5 +1,6 @@
 package com.epam.tc.hw3.driver;
 
+import com.epam.tc.hw3.service.Browser;
 import com.epam.tc.hw3.service.DataReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
@@ -22,7 +23,4 @@ public class Driver {
         driver.manage().window().maximize();
         return driver;
     }
-}
-enum Browser {
-    chrome, firefox
 }
