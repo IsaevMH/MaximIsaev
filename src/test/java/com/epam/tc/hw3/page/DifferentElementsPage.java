@@ -10,8 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class DifferentElementsPage extends AbstractPage {
 
-    private static String BASE_URL = "https://jdi-testing.github.io/jdi-light/different-elements.html";
-
     @FindBy(className = "label-checkbox")
     private List<WebElement> checkboxes;
     @FindBy(xpath = "//div[@class='checkbox-row']/label[@class='label-radio']")
@@ -29,27 +27,23 @@ public class DifferentElementsPage extends AbstractPage {
     }
 
     @Override
-    public DifferentElementsPage openPage() {
+    public void openPage() {
         driver.navigate().to(BASE_URL);
-        return this;
     }
 
-    public DifferentElementsPage selectWaterAndWindCheckBoxes() {
+    public void selectWaterAndWindCheckBoxes() {
         checkboxes.get(0).click();
         checkboxes.get(2).click();
-        return this;
     }
 
-    public DifferentElementsPage selectSelenMetalRadio() {
+    public void selectSelenMetalRadio() {
         radios.get(3).click();
-        return this;
     }
 
-    public DifferentElementsPage selectYellowColor() {
+    public void selectYellowColor() {
         dropDownList.click();
         colorsList.get(3).click();
         dropDownList.click();
-        return this;
     }
     
     public List<String> getAllSelectedElements() {

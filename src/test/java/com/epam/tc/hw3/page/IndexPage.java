@@ -10,7 +10,6 @@ import org.openqa.selenium.support.PageFactory;
 
 public class IndexPage extends AbstractPage {
 
-    public static String BASE_URL = "https://jdi-testing.github.io/jdi-light/index.html";
 
     @FindBy(className = "dropdown-toggle")
     private List<WebElement> dropDownList;
@@ -47,23 +46,20 @@ public class IndexPage extends AbstractPage {
     }
 
     @Override
-    public IndexPage openPage() {
+    public void openPage() {
         driver.navigate().to(BASE_URL);
-        return this;
     }
 
-    public IndexPage login() {
+    public void login(String login, String password) {
         dropDownList.get(1).click();
-        loginField.sendKeys(DataReader.getProperty("login"));
-        passwordField.sendKeys(DataReader.getProperty("passwd"));
+        loginField.sendKeys(login);
+        passwordField.sendKeys(password);
         enterButton.click();
-        return this;
     }
 
-    public IndexPage logout() {
+    public void logout() {
         dropDownList.get(1).click();
         logoutButton.click();
-        return this;
     }
 
     public List<WebElement> getMenuOptions() {

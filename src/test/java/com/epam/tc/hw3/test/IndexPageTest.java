@@ -4,6 +4,8 @@ import com.epam.tc.hw3.page.IndexPage;
 
 import java.util.Arrays;
 import java.util.List;
+
+import com.epam.tc.hw3.service.DataReader;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -11,29 +13,17 @@ public class IndexPageTest extends BaseTest {
 
     @Test
     public void isUserLogin() {
-        String userName = new IndexPage(driver)
-                .openPage()
-                .login()
-                .getUserName();
-        softAssert.assertEquals(userName, "ROMAN IOVLEV");
-        softAssert.assertAll();
-    }
-
-    @Test
-    public void isUserLogout() {
-        String userName = new IndexPage(driver)
-                .openPage()
-                .logout()
-                .getUserName();
-        softAssert.assertEquals(userName, "");
+        IndexPage indexPage = new IndexPage(driver);
+        indexPage.openPage();
+        indexPage.login(DataReader.getProperty("login"), DataReader.getProperty("passwd"));
+        softAssert.assertEquals(indexPage.getUserName(), "ROMAN IOVLEV");
         softAssert.assertAll();
     }
 
     @Test
     public void isOptionsExistedOnPanelOfTheMainPage() {
-        List<WebElement> elementsOfmenu = new IndexPage(driver)
-                .openPage()
-                .getMenuOptions();
+        IndexPage indexPage = new IndexPage(driver);
+        List<WebElement> elementsOfmenu = indexPage.getMenuOptions();
         List<String> expectedResultList = Arrays.asList(
                 "HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
         for (int i = 0; i < elementsOfmenu.size() - 1; i++) {
@@ -44,9 +34,8 @@ public class IndexPageTest extends BaseTest {
 
     @Test
     public void isFourImagesDiplayedOnTheIndexPage() {
-        List<WebElement> images = new IndexPage(driver)
-                .openPage()
-                .getListOfPicture();
+        IndexPage indexPage = new IndexPage(driver);
+        List<WebElement> images = indexPage.getListOfPicture();
         for (WebElement image : images) {
             softAssert.assertTrue(image.isDisplayed());
         }
@@ -55,10 +44,8 @@ public class IndexPageTest extends BaseTest {
 
     @Test
     public void isTextDisplayedUnderImage() {
-
-        List<WebElement> texts = new IndexPage(driver)
-                .openPage()
-                .getListOfText();
+        IndexPage indexPage = new IndexPage(driver);
+        List<WebElement> texts = indexPage.getListOfText();
         for (WebElement text : texts) {
             softAssert.assertTrue(text.isDisplayed());
         }
@@ -67,27 +54,22 @@ public class IndexPageTest extends BaseTest {
 
     @Test
     public void isFrameWithButtonExisted() {
-        WebElement frame = new IndexPage(driver)
-                .openPage()
-                .getFrame();
-        softAssert.assertNotNull(frame);
+        IndexPage indexPage = new IndexPage(driver);
+        softAssert.assertNotNull(indexPage.getFrame());
         softAssert.assertAll();
     }
 
     @Test
     public void isButtonContainedIntoTheFrame() {
-        String button = new IndexPage(driver)
-                .openPage()
-                .getFrameButton();
-        softAssert.assertEquals(button, "Frame Button");
+        IndexPage indexPage = new IndexPage(driver);
+        softAssert.assertEquals(indexPage.getFrameButton(), "Frame Button");
         softAssert.assertAll();
     }
 
     @Test
     public void isOptionsOfMenuOnTheLeftSideBarExisted() {
-        List<WebElement> options = new IndexPage(driver)
-                .openPage()
-                .getLeftMenuOptions();
+        IndexPage indexPage = new IndexPage(driver);
+        List<WebElement> options = indexPage.getLeftMenuOptions();
         List<String> expectedResultList = Arrays.asList(
                 "Home", "Contact form", "Service", "Metals & Colors", "Elements packs");
         for (int i = 0; i < options.size(); i++) {

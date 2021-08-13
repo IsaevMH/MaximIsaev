@@ -7,7 +7,7 @@ import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 public class BaseTest {
-    protected static final String BASE_URL = "https://jdi-testing.github.io/jdi-light/index.html";
+    protected static final String BASE_URL = DataReader.getProperty("url");
     protected WebDriver driver;
     protected SoftAssert softAssert;
 

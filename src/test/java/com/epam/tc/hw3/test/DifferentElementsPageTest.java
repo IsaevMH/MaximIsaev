@@ -4,6 +4,7 @@ import com.epam.tc.hw3.page.DifferentElementsPage;
 import com.epam.tc.hw3.page.IndexPage;
 import java.util.Arrays;
 import java.util.List;
+import com.epam.tc.hw3.service.DataReader;
 import org.testng.annotations.Test;
 
 
@@ -11,11 +12,11 @@ public class DifferentElementsPageTest extends BaseTest {
 
     @Test
     public void isUserLogin() {
-        String userName = new IndexPage(driver)
-                .openPage()
-                .login()
-                .getUserName();
-        softAssert.assertEquals(userName, "ROMAN IOVLEV");
+        IndexPage indexPage =  new IndexPage(driver);
+        indexPage.openPage();
+        indexPage.login(DataReader.getProperty("login"),
+                DataReader.getProperty("passwd"));
+        softAssert.assertEquals(indexPage.getUserName(), "ROMAN IOVLEV");
         softAssert.assertAll();
     }
 
@@ -23,34 +24,30 @@ public class DifferentElementsPageTest extends BaseTest {
     public void areWaterAndWindCheckboxesSelected() {
         List<String> expectedResult = Arrays.asList("Wind:true", "Water:true");
 
-        List<String> checkedWindAndWaterCheckBoxesResult = new IndexPage(driver)
-                .openPage()
-                .gotToDifferentElementsPage()
-                .selectWaterAndWindCheckBoxes()
-                .getAllSelectedElements();
-        softAssert.assertEquals(checkedWindAndWaterCheckBoxesResult, expectedResult);
+        IndexPage indexPage = new IndexPage(driver);
+        indexPage.gotToDifferentElementsPage();
+        DifferentElementsPage differentElementsPage = new DifferentElementsPage(driver);
+        differentElementsPage.selectWaterAndWindCheckBoxes();
+
+        softAssert.assertEquals(differentElementsPage.getAllSelectedElements(), expectedResult);
         softAssert.assertAll();
     }
 
     @Test(dependsOnMethods = "areWaterAndWindCheckboxesSelected")
     public void isSelenMetalRadioSelected() {
         String expectedResult = "metal:Selen";
-        String metalActualResult = new DifferentElementsPage(driver)
-                .selectSelenMetalRadio()
-                .getAllSelectedElements()
-                .get(0);
-        softAssert.assertEquals(metalActualResult, expectedResult);
+        DifferentElementsPage differentElementsPage = new DifferentElementsPage(driver);
+        differentElementsPage.selectSelenMetalRadio();
+        softAssert.assertEquals(differentElementsPage.getAllSelectedElements().get(0), expectedResult);
         softAssert.assertAll();
     }
 
     @Test(dependsOnMethods = "isSelenMetalRadioSelected")
     public void isYellowColorFromDropDownListSelected() {
         String expectedResult = "Colors:Yellow";
-        String colorActualResult = new DifferentElementsPage(driver)
-                .selectYellowColor()
-                .getAllSelectedElements()
-                .get(0);
-        softAssert.assertEquals(colorActualResult, expectedResult);
+        DifferentElementsPage differentElementsPage = new DifferentElementsPage(driver);
+        differentElementsPage.selectYellowColor();
+        softAssert.assertEquals(differentElementsPage.getAllSelectedElements().get(0), expectedResult);
         softAssert.assertAll();
     }
 }
