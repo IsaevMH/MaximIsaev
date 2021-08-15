@@ -2,7 +2,7 @@
 <suite name="IndexPageTestSelenium3Suite">
     <test name="IndexPageTest" >
         <classes>
-            <class name="com.epam.tc.hw3.test.IndexPageTest"></class>
+            <class name="com.epam.tc.hw4.test.IndexPageTest"/>
         </classes>
     </test>
 </suite>

@@ -47,10 +47,12 @@ public class IndexPage extends AbstractPage {
     }
 
     @Override
+    @Step("Open 'Index' page")
     public void openPage() {
         driver.navigate().to(BASE_URL);
     }
 
+    @Step("Fill login and password fields")
     public void login(String login, String password) {
         dropDownList.get(1).click();
         loginField.sendKeys(login);
@@ -58,31 +60,38 @@ public class IndexPage extends AbstractPage {
         enterButton.click();
     }
 
+    @Step("Click logout")
     public void logout() {
         dropDownList.get(1).click();
         logoutButton.click();
     }
 
+    @Step("Get menu options")
     public List<WebElement> getMenuOptions() {
         return listOfElementsMenu;
     }
 
+    @Step("Get list of pictures")
     public List<WebElement> getListOfPicture() {
         return listOfPicture;
     }
 
+    @Step("Get list of texts")
     public List<WebElement> getListOfText() {
         return listOfTexts;
     }
 
+    @Step("Get user name")
     public String getUserName() {
         return userInfo.getText();
     }
 
+    @Step("Get frame")
     public WebElement getFrame() {
         return frame;
     }
 
+    @Step("Get the frame button")
     public String getFrameButton() {
         driver.switchTo().frame(driver.findElement(By.id("frame")));
         String nameButton = frameButton.getAttribute("value");
@@ -90,10 +99,12 @@ public class IndexPage extends AbstractPage {
         return nameButton;
     }
 
+    @Step("Get left menu options")
     public List<WebElement> getLeftMenuOptions() {
         return leftMenuOptions;
     }
 
+    @Step("Move to the 'Different Elements' page")
     public DifferentElementsPage gotToDifferentElementsPage() {
         serviceButton.click();
         differentElementsOption.click();

@@ -26,7 +26,7 @@
         <testng.suite.file>${testng.configs.path}/hw1/calc.empty.xml</testng.suite.file>
         <testng.selenium1Suite.file>${testng.configs.path}/hw2/selenium.emptyTest.xml</testng.selenium1Suite.file>
         <testng.selenium2Suite.file>${testng.configs.path}/hw3/selenium2.emptyTest.xml</testng.selenium2Suite.file>
-        <testng.selenium3Suite.file>src/test/resources/testng/hw4/selenium3.emptyTest.xml</testng.selenium3Suite.file>
+        <testng.selenium3Suite.file>${testng.configs.path}/hw4/selenium3.emptyTest.xml</testng.selenium3Suite.file>
     </properties>
 
     <dependencies>
@@ -68,6 +68,12 @@
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>${allure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 

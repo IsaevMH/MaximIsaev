@@ -2,7 +2,7 @@
 <suite name="differentElementsPageTestSelenium3Suite">
     <test name="differentElementsPageTests" >
         <classes>
-            <class name="com.epam.tc.hw3.test.DifferentElementsPageTest"></class>
+            <class name="com.epam.tc.hw4.test.DifferentElementsPageTest"/>
         </classes>
     </test>
 </suite>

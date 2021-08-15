@@ -1,6 +1,8 @@
 package com.epam.tc.hw4.page;
 
 import com.epam.tc.hw4.utils.TextSpliterator;
+import io.qameta.allure.Description;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,25 +30,30 @@ public class DifferentElementsPage extends AbstractPage {
     }
 
     @Override
+    @Step("Open 'Different Elements' page")
     public void openPage() {
         driver.navigate().to(BASE_URL);
     }
 
+    @Step("Select water and wind checkboxes")
     public void selectWaterAndWindCheckBoxes() {
         checkboxes.get(0).click();
         checkboxes.get(2).click();
     }
 
+    @Step("Select the Selen metal radio button")
     public void selectSelenMetalRadio() {
         radios.get(3).click();
     }
 
+    @Step("Select yellow color from drop-down list")
     public void selectYellowColor() {
         dropDownList.click();
         colorsList.get(3).click();
         dropDownList.click();
     }
-    
+
+    @Step("Get all selected elements")
     public List<String> getAllSelectedElements() {
         List<String> resultListOfElements = new ArrayList<>();
         for (WebElement log : logs) {
