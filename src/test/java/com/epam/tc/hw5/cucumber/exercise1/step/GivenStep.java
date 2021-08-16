@@ -1,13 +1,9 @@
-package com.epam.tc.hw5.cucumber.exercise1;
+package com.epam.tc.hw5.cucumber.exercise1.step;
 
 import com.epam.tc.hw5.service.DataReader;
 import io.cucumber.java.en.Given;
-import org.openqa.selenium.WebDriver;
 
 public class GivenStep extends AbstractStep {
-    protected GivenStep(WebDriver webDriver) {
-        super(webDriver);
-    }
 
     @Given("I open 'Index' page")
     public void openIndexPage() {

@@ -1,10 +1,8 @@
-package com.epam.tc.hw5.cucumber.exercise1;
+package com.epam.tc.hw5.cucumber.exercise1.step;
 
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
 
 public class ActionStep extends AbstractStep {
-    protected ActionStep(WebDriver webDriver) { super(webDriver); }
 
     @When("I select water, wind elements")
     public void selectWaterAndWindCheckboxes() {
