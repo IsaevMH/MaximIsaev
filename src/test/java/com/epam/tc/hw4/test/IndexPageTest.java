@@ -39,7 +39,7 @@ public class IndexPageTest extends BaseTest {
         IndexPage indexPage = new IndexPage(driver);
         List<String> elementsOfmenu = indexPage.getMenuOptions().stream()
                 .map(element -> element.getText())
-                .filter(element -> !element.isEmpty())
+                //.filter(element -> !element.isEmpty())
                 .collect(Collectors.toList());
         List<String> expectedResultList = Arrays.asList(
                 "HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
