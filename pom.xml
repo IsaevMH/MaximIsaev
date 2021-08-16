@@ -15,15 +15,18 @@
         <testng.version>7.4.0</testng.version>
         <assertj-core.version>3.20.2</assertj-core.version>
         <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
-        <testng.configs.path>${project.build.testOutputDirectory}/testng</testng.configs.path>
-        <testng.suite.file>${testng.configs.path}/hw1/calc.empty.xml</testng.suite.file>
         <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
         <maven-compiler-plugin.source>11</maven-compiler-plugin.source>
         <maven-compiler-plugin.target>11</maven-compiler-plugin.target>
-        <testng.selenium1Suite.file>${testng.configs.path}/hw2/selenium.emptyTest.xml</testng.selenium1Suite.file>
-        <testng.selenium2Suite.file>${testng.configs.path}/hw3/selenium2.emptyTest.xml</testng.selenium2Suite.file>
         <selenium-java.version>3.141.59</selenium-java.version>
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
+        <aspectj.version>1.9.7</aspectj.version>
+        <allure.version>2.14.0</allure.version>
+        <testng.configs.path>${project.build.testOutputDirectory}/testng</testng.configs.path>
+        <testng.suite.file>${testng.configs.path}/hw1/calc.empty.xml</testng.suite.file>
+        <testng.selenium1Suite.file>${testng.configs.path}/hw2/selenium.emptyTest.xml</testng.selenium1Suite.file>
+        <testng.selenium2Suite.file>${testng.configs.path}/hw3/selenium2.emptyTest.xml</testng.selenium2Suite.file>
+        <testng.selenium3Suite.file>${testng.configs.path}/hw4/selenium3.emptyTest.xml</testng.selenium3Suite.file>
     </properties>
 
     <dependencies>
@@ -60,33 +63,63 @@
             <artifactId>webdrivermanager</artifactId>
             <version>${webdrivermanager.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-testng -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${maven-compiler-plugin.source}</source>
-                    <target>${maven-compiler-plugin.target}</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven-surefire-plugin.version}</version>
                 <configuration>
+                    <testFailureIgnore>false</testFailureIgnore>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>${testng.suite.file}</suiteXmlFile>
                         <suiteXmlFile>${testng.selenium1Suite.file}</suiteXmlFile>
                         <suiteXmlFile>${testng.selenium2Suite.file}</suiteXmlFile>
+                        <suiteXmlFile>${testng.selenium3Suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
+
+    <reporting>
+        <excludeDefaults>true</excludeDefaults>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.10.0</version>
+                <configuration>
+                    <reportVersion>${allure.version}</reportVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
+
     <profiles>
         <profile>
             <id>hw1-allMathematicalOperationsTest-profile</id>
@@ -143,6 +176,24 @@
             <id>hw3-allPagesTests-profile</id>
             <properties>
                 <testng.selenium2Suite.file>${testng.configs.path}/hw3/selenium2.allTest.xml</testng.selenium2Suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw4-allPagesTests-profile</id>
+            <properties>
+                <testng.selenium3Suite.file>${testng.configs.path}/hw4/selenium3.allTest.xml</testng.selenium3Suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw4-IndexPageTest-profile</id>
+            <properties>
+                <testng.selenium3Suite.file>${testng.configs.path}/hw4/selenium3.ex1Test.xml</testng.selenium3Suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw4-DifferentElementsPageTest-profile</id>
+            <properties>
+                <testng.selenium3Suite.file>${testng.configs.path}/hw4/selenium3.ex2Test.xml</testng.selenium3Suite.file>
             </properties>
         </profile>
     </profiles>
