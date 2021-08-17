@@ -41,6 +41,8 @@ public class IndexPage extends AbstractPage {
     private WebElement serviceButton;
     @FindBy(xpath = "//ul/li/a[text() ='Different elements']")
     private WebElement differentElementsOption;
+    @FindBy(xpath = "//ul/li/ul/li/a[text()='User Table ']")
+    private WebElement userTable;
 
     public IndexPage(WebDriver driver) {
         super(driver);
@@ -111,4 +113,16 @@ public class IndexPage extends AbstractPage {
         differentElementsOption.click();
         return new DifferentElementsPage(driver);
     }
+
+    @Step("Click on the 'Service' option")
+    public void clickOnServiceOption() {
+        serviceButton.click();
+    }
+
+    @Step("Click on the 'User Table' suboption")
+    public void clickOnUserTableSubOption() {
+        userTable.click();
+    }
+
+
 }
