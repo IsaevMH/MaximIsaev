@@ -27,6 +27,7 @@
         <testng.selenium1Suite.file>${testng.configs.path}/hw2/selenium.emptyTest.xml</testng.selenium1Suite.file>
         <testng.selenium2Suite.file>${testng.configs.path}/hw3/selenium2.emptyTest.xml</testng.selenium2Suite.file>
         <testng.selenium3Suite.file>${testng.configs.path}/hw4/selenium3.emptyTest.xml</testng.selenium3Suite.file>
+        <testng.selenium4Suite.file>${testng.configs.path}/hw5/selenium4.emptyTest.xml</testng.selenium4Suite.file>
     </properties>
 
     <dependencies>
@@ -105,6 +106,7 @@
                         <suiteXmlFile>${testng.selenium1Suite.file}</suiteXmlFile>
                         <suiteXmlFile>${testng.selenium2Suite.file}</suiteXmlFile>
                         <suiteXmlFile>${testng.selenium3Suite.file}</suiteXmlFile>
+                        <suiteXmlFile>${testng.selenium4Suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>
@@ -206,6 +208,12 @@
             <id>hw4-DifferentElementsPageTest-profile</id>
             <properties>
                 <testng.selenium3Suite.file>${testng.configs.path}/hw4/selenium3.ex2Test.xml</testng.selenium3Suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw5-AllPagesTest-profile</id>
+            <properties>
+                <testng.selenium4Suite.file>${testng.configs.path}/hw5/selenium4.allTest.xml</testng.selenium4Suite.file>
             </properties>
         </profile>
     </profiles>

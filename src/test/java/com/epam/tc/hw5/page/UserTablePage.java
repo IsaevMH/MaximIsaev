@@ -1,7 +1,7 @@
 package com.epam.tc.hw5.page;
 
 import com.epam.tc.hw5.utils.TextSpliterator;
-import org.openqa.selenium.By;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -51,40 +51,47 @@ public class UserTablePage extends AbstractPage {
         driver.navigate().to("url");
     }
 
+    @Step("Get list of selected users types")
     public List<String> getListOfSelectedUserType() {
         return listOfSelectedUserType.stream()
                 .map(userType -> userType.getText())
                 .collect(Collectors.toList());
     }
 
+    @Step("Get list of users names")
     public List<String> getListOfUserName() {
         return listOfUserName.stream()
                 .map(userName -> userName.getText())
                 .collect(Collectors.toList());
     }
 
+    @Step("Get list of texts under images")
     public List<String> getListOfTextUnderImages() {
         return listOfTextUnderImages.stream()
                 .map(text -> text.getText())
                 .collect(Collectors.toList());
     }
 
+    @Step("Get list of status checkboxes")
     public List<String> getListOflistOfCheckboxes() {
         return listOfCheckboxes.stream()
                 .map(status -> status.getText())
                 .collect(Collectors.toList());
     }
 
+    @Step("Get list of users id")
     public List<String> getUsersId() {
         return usersId.stream()
                 .map(id -> id.getText())
                 .collect(Collectors.toList());
     }
 
+    @Step("Get title of the page")
     public String getTitleOfThePage() {
         return titleOfThePage.getText();
     }
 
+    @Step("Get users types for Roman")
     public List<String> getUserTypesForRoman() {
         List<String> types =  usersTypesForRoman.stream()
                 .map(webElement -> webElement.getText())
@@ -95,10 +102,12 @@ public class UserTablePage extends AbstractPage {
         return types;
     }
 
-    public void clickOnVipCheckBoxForRoman() {
+    @Step("Click on vip checkbox for Sergey")
+    public void clickOnVipCheckBoxForSergey() {
         listOfStatus.get(1).click();
     }
 
+    @Step("Get all logs from log field")
     public List<String> getLogs() {
         List<String> resultListOfElements = new ArrayList<>();
         for (WebElement log : logs) {
