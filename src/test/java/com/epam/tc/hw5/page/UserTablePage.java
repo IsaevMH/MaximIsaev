@@ -1,11 +1,13 @@
 package com.epam.tc.hw5.page;
 
+import com.epam.tc.hw5.utils.TextSpliterator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -32,6 +34,12 @@ public class UserTablePage extends AbstractPage {
 
     @FindBy(xpath = "//tbody/tr/td[1]")
     private List<WebElement> usersId;
+
+    @FindBy(xpath = "//tbody/tr/td/div/label")
+    private List<WebElement> listOfStatus;
+
+    @FindBy(xpath = "//section/div/div/ul/li")
+    private List<WebElement> logs;
 
     public UserTablePage(WebDriver driver) {
         super(driver);
@@ -85,5 +93,17 @@ public class UserTablePage extends AbstractPage {
                 .filter(element -> !element.isEmpty())
                 .collect(Collectors.toList());
         return types;
+    }
+
+    public void clickOnVipCheckBoxForRoman() {
+        listOfStatus.get(1).click();
+    }
+
+    public List<String> getLogs() {
+        List<String> resultListOfElements = new ArrayList<>();
+        for (WebElement log : logs) {
+            resultListOfElements.add(TextSpliterator.split(log.getText()));
+        }
+        return resultListOfElements;
     }
 }
