@@ -28,6 +28,10 @@
         <testng.selenium2Suite.file>${testng.configs.path}/hw3/selenium2.emptyTest.xml</testng.selenium2Suite.file>
         <testng.selenium3Suite.file>${testng.configs.path}/hw4/selenium3.emptyTest.xml</testng.selenium3Suite.file>
         <testng.selenium4Suite.file>${testng.configs.path}/hw5/selenium4.emptyTest.xml</testng.selenium4Suite.file>
+        <allure-cucumber6-jvm.version>2.14.0</allure-cucumber6-jvm.version>
+        <cucumber-java.version>6.11.0</cucumber-java.version>
+        <cucumber-testng.version>6.11.0</cucumber-testng.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
     </properties>
 
     <dependencies>
@@ -74,19 +78,19 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
-            <version>6.11.0</version>
+            <version>${cucumber-testng.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version>6.11.0</version>
+            <version>${cucumber-java.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber6-jvm -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-cucumber6-jvm</artifactId>
-            <version>2.14.0</version>
+            <version>${allure-cucumber6-jvm.version}</version>
         </dependency>
     </dependencies>
 
@@ -126,7 +130,7 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.10.0</version>
+                <version>${allure-maven.version}</version>
                 <configuration>
                     <reportVersion>${allure.version}</reportVersion>
                 </configuration>

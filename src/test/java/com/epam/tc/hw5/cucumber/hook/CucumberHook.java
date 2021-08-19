@@ -1,4 +1,4 @@
-package com.epam.tc.hw5.cucumber.exercise3.hook;
+package com.epam.tc.hw5.cucumber.hook;
 
 import com.epam.tc.hw5.driver.Driver;
 import com.epam.tc.hw5.service.TestContext;

@@ -2,9 +2,7 @@
 <suite name="allSelenium4TestSuite">
     <test name="allSelenium4Tests" >
         <classes>
-            <class name="com.epam.tc.hw5.cucumber.exercise1.RunAcceptanceTest"/>
-            <class name="com.epam.tc.hw5.cucumber.exercise2.RunAcceptanceTest"/>
-            <class name="com.epam.tc.hw5.cucumber.exercise3.RunAcceptanceTest"/>
+            <class name="com.epam.tc.hw5.cucumber.RunAcceptanceTest"/>
         </classes>
     </test>
 </suite>

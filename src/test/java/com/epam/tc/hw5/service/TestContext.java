@@ -6,7 +6,7 @@ import java.util.Map;
 public final class TestContext {
     private static TestContext instance;
 
-    private Map<String, Object> context = new HashMap<>();
+    private final Map<String, Object> context = new HashMap<>();
 
     private TestContext() {
     }
@@ -16,7 +16,7 @@ public final class TestContext {
     }
 
     public <T> T getTestObject(String key) {
-        return (T) context.get(key);
+            return (T) context.get(key);
     }
 
     public void clean() {
