@@ -27,6 +27,11 @@
         <testng.selenium1Suite.file>${testng.configs.path}/hw2/selenium.emptyTest.xml</testng.selenium1Suite.file>
         <testng.selenium2Suite.file>${testng.configs.path}/hw3/selenium2.emptyTest.xml</testng.selenium2Suite.file>
         <testng.selenium3Suite.file>${testng.configs.path}/hw4/selenium3.emptyTest.xml</testng.selenium3Suite.file>
+        <testng.selenium4Suite.file>${testng.configs.path}/hw5/selenium4.emptyTest.xml</testng.selenium4Suite.file>
+        <allure-cucumber6-jvm.version>2.14.0</allure-cucumber6-jvm.version>
+        <cucumber-java.version>6.11.0</cucumber-java.version>
+        <cucumber-testng.version>6.11.0</cucumber-testng.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
     </properties>
 
     <dependencies>
@@ -69,11 +74,23 @@
             <artifactId>allure-testng</artifactId>
             <version>${allure.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>${cucumber-testng.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber-java.version}</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.qameta.allure/allure-cucumber6-jvm -->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber6-jvm</artifactId>
+            <version>${allure-cucumber6-jvm.version}</version>
         </dependency>
     </dependencies>
 
@@ -93,6 +110,7 @@
                         <suiteXmlFile>${testng.selenium1Suite.file}</suiteXmlFile>
                         <suiteXmlFile>${testng.selenium2Suite.file}</suiteXmlFile>
                         <suiteXmlFile>${testng.selenium3Suite.file}</suiteXmlFile>
+                        <suiteXmlFile>${testng.selenium4Suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>
@@ -112,7 +130,7 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.10.0</version>
+                <version>${allure-maven.version}</version>
                 <configuration>
                     <reportVersion>${allure.version}</reportVersion>
                 </configuration>
@@ -194,6 +212,12 @@
             <id>hw4-DifferentElementsPageTest-profile</id>
             <properties>
                 <testng.selenium3Suite.file>${testng.configs.path}/hw4/selenium3.ex2Test.xml</testng.selenium3Suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw5-AllPagesTest-profile</id>
+            <properties>
+                <testng.selenium4Suite.file>${testng.configs.path}/hw5/selenium4.allTest.xml</testng.selenium4Suite.file>
             </properties>
         </profile>
     </profiles>
