@@ -22,16 +22,17 @@
         <webdrivermanager.version>4.4.3</webdrivermanager.version>
         <aspectj.version>1.9.7</aspectj.version>
         <allure.version>2.14.0</allure.version>
+        <allure-cucumber6-jvm.version>2.14.0</allure-cucumber6-jvm.version>
+        <cucumber-java.version>6.11.0</cucumber-java.version>
+        <cucumber-testng.version>6.11.0</cucumber-testng.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
         <testng.configs.path>${project.build.testOutputDirectory}/testng</testng.configs.path>
         <testng.suite.file>${testng.configs.path}/hw1/calc.empty.xml</testng.suite.file>
         <testng.selenium1Suite.file>${testng.configs.path}/hw2/selenium.emptyTest.xml</testng.selenium1Suite.file>
         <testng.selenium2Suite.file>${testng.configs.path}/hw3/selenium2.emptyTest.xml</testng.selenium2Suite.file>
         <testng.selenium3Suite.file>${testng.configs.path}/hw4/selenium3.emptyTest.xml</testng.selenium3Suite.file>
         <testng.selenium4Suite.file>${testng.configs.path}/hw5/selenium4.emptyTest.xml</testng.selenium4Suite.file>
-        <allure-cucumber6-jvm.version>2.14.0</allure-cucumber6-jvm.version>
-        <cucumber-java.version>6.11.0</cucumber-java.version>
-        <cucumber-testng.version>6.11.0</cucumber-testng.version>
-        <allure-maven.version>2.10.0</allure-maven.version>
+        <testng.selenium5Suite.file>${testng.configs.path}/hw6/selenium5.emptyTest.xml</testng.selenium5Suite.file>
     </properties>
 
     <dependencies>
@@ -111,6 +112,7 @@
                         <suiteXmlFile>${testng.selenium2Suite.file}</suiteXmlFile>
                         <suiteXmlFile>${testng.selenium3Suite.file}</suiteXmlFile>
                         <suiteXmlFile>${testng.selenium4Suite.file}</suiteXmlFile>
+                        <suiteXmlFile>${testng.selenium5Suite.file}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>
@@ -218,6 +220,18 @@
             <id>hw5-AllPagesTest-profile</id>
             <properties>
                 <testng.selenium4Suite.file>${testng.configs.path}/hw5/selenium4.allTest.xml</testng.selenium4Suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw6-IndexPageTest-profile</id>
+            <properties>
+                <testng.selenium5Suite.file>${testng.configs.path}/hw6/selenium5.IndexPage.xml</testng.selenium5Suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw6-DifferentElementsPageTest-profile</id>
+            <properties>
+                <testng.selenium5Suite.file>${testng.configs.path}/hw6/selenium5.DifferentElementPage.xml</testng.selenium5Suite.file>
             </properties>
         </profile>
     </profiles>
