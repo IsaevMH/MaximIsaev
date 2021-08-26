@@ -33,6 +33,7 @@
         <testng.selenium3Suite.file>${testng.configs.path}/hw4/selenium3.emptyTest.xml</testng.selenium3Suite.file>
         <testng.selenium4Suite.file>${testng.configs.path}/hw5/selenium4.emptyTest.xml</testng.selenium4Suite.file>
         <testng.selenium5Suite.file>${testng.configs.path}/hw6/selenium5.emptyTest.xml</testng.selenium5Suite.file>
+        <testng.jdiSuire.file>src/test/resources/testng/hw7/jdiEmpty.xml</testng.jdiSuire.file>
     </properties>
 
     <dependencies>
@@ -98,6 +99,13 @@
             <artifactId>jdi-light-html</artifactId>
             <version>1.3.13</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.12.4</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -118,6 +126,7 @@
                         <suiteXmlFile>${testng.selenium3Suite.file}</suiteXmlFile>
                         <suiteXmlFile>${testng.selenium4Suite.file}</suiteXmlFile>
                         <suiteXmlFile>${testng.selenium5Suite.file}</suiteXmlFile>
+                        <suiteXmlFile>${testng.jdiSuire.file}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
                 <dependencies>
@@ -237,6 +246,12 @@
             <id>hw6-DifferentElementsPageTest-profile</id>
             <properties>
                 <testng.selenium5Suite.file>${testng.configs.path}/hw6/selenium5.DifferentElementPage.xml</testng.selenium5Suite.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>hw7-Jdi-MetalsColorsPageTest-profile</id>
+            <properties>
+                <testng.selenium5Suite.file>${testng.configs.path}/hw7/jdi.xml</testng.selenium5Suite.file>
             </properties>
         </profile>
     </profiles>
