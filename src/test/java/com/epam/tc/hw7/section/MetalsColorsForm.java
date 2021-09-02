@@ -7,13 +7,10 @@ import com.epam.jdi.light.elements.pageobjects.annotations.locators.Css;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.JDropdown;
 import com.epam.jdi.light.elements.pageobjects.annotations.locators.UI;
 import com.epam.jdi.light.ui.html.elements.common.Button;
-import com.epam.jdi.light.ui.html.elements.common.TextField;
 import com.epam.jdi.light.ui.html.elements.complex.RadioButtons;
-import com.epam.tc.hw7.entity.Data;
+import com.epam.tc.hw7.entity.MetalsColorsFormData;
 
-import java.util.List;
-
-public class MetalsColorsForm extends Form<Data> {
+public class MetalsColorsForm extends Form<MetalsColorsFormData> {
     @UI("#odds-selector input")
     public static RadioButtons summFirstRow;
     @UI("#even-selector input")
@@ -30,17 +27,17 @@ public class MetalsColorsForm extends Form<Data> {
     public static Dropdown vegetables;
 
     @Override
-    public void fill(Data data) {
-        summFirstRow.select(data.getSummary().get(0).toString());
-        summSecondRow.select(data.getSummary().get(1).toString());
-        for (String element : data.getElements()) {
+    public void fill(MetalsColorsFormData metalsColorsFormData) {
+        summFirstRow.select(metalsColorsFormData.getSummary().get(0).toString());
+        summSecondRow.select(metalsColorsFormData.getSummary().get(1).toString());
+        for (String element : metalsColorsFormData.getElements()) {
             elements.select(element);
         }
 
-        colors.select(data.getColor());
-        metals.select(data.getMetals());
+        colors.select(metalsColorsFormData.getColor());
+        metals.select(metalsColorsFormData.getMetals());
 
-        for (String vegetable : data.getVegetables()) {
+        for (String vegetable : metalsColorsFormData.getVegetables()) {
                 vegetables.select(vegetable);
         }
     }

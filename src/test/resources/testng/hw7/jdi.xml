@@ -2,7 +2,7 @@
 <suite name="jdiSuite">
     <test name="MetalsColorsPageTest" >
         <classes>
-            <class name="com.epam.tc.hw7.test.metalsColorsPageTest"/>
+            <class name="com.epam.tc.hw7.test.MetalsColorsPageTest"/>
         </classes>
     </test>
 </suite>

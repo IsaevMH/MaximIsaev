@@ -1,11 +1,10 @@
 package com.epam.tc.hw7.entity;
 
 import com.epam.jdi.tools.DataClass;
-import com.epam.tc.hw7.utils.StringCreator;
 
 import java.util.List;
 
-public class Data extends DataClass<Data> {
+public class MetalsColorsFormData extends DataClass<MetalsColorsFormData> {
     List<Integer> summary;
     List<String> elements;
     String color;
@@ -51,13 +50,4 @@ public class Data extends DataClass<Data> {
     public void setVegetables(List<String> vegetables) {
         this.vegetables = vegetables;
     }
-
-//    @Override
-//    public String toString() {
-//        return "Summary: " + summary.stream().mapToInt(Integer::intValue).sum() +
-//                ";Elements: " + StringCreator.create(elements) +
-//                ";Color: " + color  +
-//                ";Metals: " + metals +
-//                ";Vegetables: " + StringCreator.create(vegetables);
-//    }
 }
