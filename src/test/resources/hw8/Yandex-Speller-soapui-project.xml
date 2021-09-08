@@ -195,11 +195,9 @@ tStep.run(testRunner, context)</con:setupScript><con:tearDownScript>testRunner.t
 def expectedTexts = ["Value", "Incorrect", "issues"]
 
 for(i = 0; i &lt; texts.size; i++) {
-	for(j = i; j &lt;= i; j++) {
 		testRunner.testCase.setPropertyValue("Texts", texts[i])
-		testRunner.testCase.setPropertyValue("ExpectedTexts", expectedTexts[j])
+		testRunner.testCase.setPropertyValue("ExpectedTexts", expectedTexts[i])
 		testRunner.runTestStepByName("SendTextViaArray")
-	}
 }
     </script></con:config></con:testStep><con:testStep type="request" name="SendTextViaArray" id="05bc38ce-f71f-485f-aaef-79d748f83c40"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>SpellServiceSoap</con:interface><con:operation>checkText</con:operation><con:request name="SendTextViaArray" id="eca5e210-ed02-45d3-95b0-c4ea15258a83"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://speller.yandex.net/services/spellservice</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:spel="http://speller.yandex.net/services/spellservice">\r
    <soapenv:Header/>\r
