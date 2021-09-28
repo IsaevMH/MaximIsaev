@@ -12,7 +12,7 @@ public class ExpectedResultCreatorUtil {
                 add(String.format("Summary: %d", metalsColorsFormData.getSummary().stream().mapToInt(Integer::intValue).sum()));
                 add(String.format("Elements: %s", StringCreatorUtil.create(metalsColorsFormData.getElements())));
                 add((String.format("Color: %s", metalsColorsFormData.getColor())));
-                add((String.format("Metals: %s", metalsColorsFormData.getMetals())));
+                add((String.format("Metal: %s", metalsColorsFormData.getMetals())));
                 add((String.format("Vegetables: %s", StringCreatorUtil.create(metalsColorsFormData.getVegetables()))));
             }
         };

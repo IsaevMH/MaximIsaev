@@ -25,7 +25,7 @@ public class MetalsColorsPageTest implements TestInit {
 
         Assertions.assertThat(result)
                 .as("Actual list doesn't match with expected result")
-                .isNotEqualTo(expectedResult);
+                .isEqualTo(expectedResult);
     }
 
     @Test
