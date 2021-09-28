@@ -17,9 +17,7 @@ public class LoginForm extends Form<LoginFormData> {
 
     @Override
     public void fill(LoginFormData loginFormData) {
-        //userIcon.click();
         login.setValue(loginFormData.getLogin());
         password.setValue(loginFormData.getPassword());
-        signInButton.click();
     }
 }
