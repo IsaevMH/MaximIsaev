@@ -13,12 +13,11 @@ public interface TestInit {
     @BeforeSuite(alwaysRun = true)
     static void setUp()  {
         openSite(SiteJdi.class);
-        login();
+        userShouldBeLoggedIn();
     }
 
     @AfterSuite(alwaysRun = true)
     static void teardown() {
-        logout();
         killAllSeleniumDrivers();
     }
 }
