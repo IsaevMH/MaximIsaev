@@ -4,6 +4,7 @@ import com.epam.tc.hw7.entity.MetalsColorsFormData;
 import com.epam.tc.hw7.page.IndexPage;
 import com.epam.tc.hw7.utils.ExpectedResultCreatorUtil;
 import org.assertj.core.api.Assertions;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import java.util.List;
 
@@ -13,6 +14,14 @@ import static com.epam.tc.hw7.page.SiteJdi.indexPage;
 import static com.epam.tc.hw7.test.DataProviderJson.USER;
 
 public class MetalsColorsPageTest implements TestInit {
+
+    @BeforeTest
+    public void testIsUserLogin() {
+        String actualName = IndexPage.loggedUserFullName.getText();
+        Assertions.assertThat(actualName)
+                .as("Full name of logged user doesn't match with expected full name")
+                .isEqualTo(USER.getFullName());
+    }
 
     @Test(dataProvider = "metalsColorsTestData", dataProviderClass = DataProviderJson.class)
     public void testMetalsColorsPage(MetalsColorsFormData metalsColorsFormData) {
@@ -27,12 +36,4 @@ public class MetalsColorsPageTest implements TestInit {
                 .as("Actual list doesn't match with expected result")
                 .isEqualTo(expectedResult);
     }
-
-    @Test
-    public void testIsUserLogin() {
-        Assertions.assertThat(IndexPage.loggedUserFullName.getText())
-                .as("Full name of logged user doesn't match with expected full name")
-                .isEqualTo(USER.getFullName());
-    }
-
 }

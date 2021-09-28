@@ -16,7 +16,7 @@ public class IndexPage extends WebPage {
     public static Link metalsColorsMenuOption;
     @UI("button.btn-login")
     public static Button loginBtn;
-    @UI("div.profile-photo span")
+    @UI("span#user-name")
     public static Text loggedUserFullName;
     @UI("#login-form")
     public static LoginForm loginForm;
@@ -25,11 +25,5 @@ public class IndexPage extends WebPage {
         userIcon.click();
         loginForm.fill(USER);
         loginBtn.click();
-    }
-
-    public static void userShouldBeLoggedIn() {
-        if(!loggedUserFullName.isDisplayed()) {
-            login();
-        }
     }
 }
