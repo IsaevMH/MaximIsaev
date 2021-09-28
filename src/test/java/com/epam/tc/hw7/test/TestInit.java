@@ -13,7 +13,6 @@ public interface TestInit {
     @BeforeSuite(alwaysRun = true)
     static void setUp()  {
         openSite(SiteJdi.class);
-        login();
     }
 
     @AfterSuite(alwaysRun = true)
